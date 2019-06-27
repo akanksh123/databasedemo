@@ -12,11 +12,13 @@ public class App
     	try{
     		Connection con=DriverManager.getConnection("jdbc:mariadb://localhost:3306/demo?user=geminid&password=");
     		Statement mystat=con.createStatement();
-    		ResultSet rs= mystat.executeQuery("Select * from MyTable");
-    		System.out.println(rs);
+    		ResultSet rs= mystat.executeQuery("Select * from detail");
+    		while(rs.next()) {
+    		System.out.println(rs.getString("name"));
+    		}
     	}
     	catch(Exception e) {
-    		System.out.println(e);
+    		System.out.println("error"+e);
     	}
     }
 }
